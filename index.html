@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="primary-container">
+        <div class="notes-list display-notesApp">
+            <!--list of saved notes-->
+        </div>
+<!------------------------------------------------------------------>
+<!-- DIGITAL CLOCK ------------------------------------------------->
+        <button class="digital-clock">
+            <span id="hrs">00</span>
+            <span>:</span>
+            <span id="min">00</span>
+            <span>:</span>
+            <span id="sec">00</span>
+        </button>
+<!------------------------------------------------------------------>
+<!-- NOTES APP ----------------------------------------------------->
+
+
+        <div class="notes-container display-notesApp">
+            <!-- JS::: <h2 class="note-title">Note Title</h2> -->
+            <!-- JS::: <p class="note-input">Input Text</p> -->
+
+            <!-- JS Reference: A -->
+            <div class="notes-nav display-notesApp">
+                <button id="create-note"><ion-icon name="create-outline"></ion-icon></button>
+                <button id="save-note"><ion-icon name="checkmark-outline"></ion-icon></button>
+                <button id="delete-note"><ion-icon name="trash-outline"></ion-icon></button>
+            </div>
+            
+            <dialog id="clear-note">
+                <div class="modal-container">
+                    <p>
+                        Would you like to start a new note? Any unsaved progress will be lost.
+                    </p>
+                    <button id="optYes" class="clear-note">Yes</button>
+                    <button id="optNo" class="cancel">No</button>
+                </div>
+            </dialog>
+
+            <dialog id="save-input">
+                <div class="modal-container">
+                    <p>
+                        Would you like to save the note?
+                    </p>
+                    <button id="optYes" class="save-note">Yes</button>
+                    <button id="optNo" class="cancel">No</button>
+                </div>
+            </dialog>
+
+            <dialog id="overwrite-input">
+                <div class="modal-container">
+                    <p>
+                        Would you like to overwrite the existing note?
+                    </p>
+                    <button id="optYes" class="save-note">Yes</button>
+                    <button id="optNo" class="cancel">No</button>
+                </div>
+            </dialog>
+
+            <dialog id="delete-save">
+                <div class="modal-container">
+                    <p>
+                        Would you like to delete the saved/current existing note?
+                    </p>
+                    <button id="optYes" class="delete-note">Yes</button>
+                    <button id="optNo" class="cancel">No</button>
+                </div>
+            </dialog>
+        </div>
+<!------------------------------------------------------------------>
+<!-- TO-DO LIST ---------------------------------------------------->
+
+    <div class="todo-list-nav-container displayToDo">
+        <button class="generate-check-tasks"><ion-icon name="checkmark-circle-outline"></ion-icon>Check Task</button>
+        <button class="generate-delete-tasks"><ion-icon name="close-circle-outline"></ion-icon>Delete Task</button>
+    </div>
+    <div class="todo-list-secondary-container displayToDo">
+        <h2 class="task-title" contenteditable="true"><!--Title: Insert Here--></h2>
+        <p class="task-info" contenteditable="true"><!--Task Description--></p>
+    </div>
+        
+    <div class="todo-list-main-container displayToDo">
+        <div>
+            <button class="generate-task"><ion-icon name="add-circle-outline"></ion-icon>Create Task</button>
+        </div>
+        <ul id="task-list">
+        <!-- 
+            DISPLAY TASK
+            <li><button class='display-task'>Example List Item 1</button></li>
+
+            CHECK TASK
+            <li><button class='check-task'><ion-icon name="checkmark-circle-sharp"></ion-icon></button><button class='display-task'>Example List Item 2</button></li> 
+
+            DELETE TASK
+            <li><button class='delete-task'><ion-icon name="close-circle-sharp"></ion-icon></button><button class='display-task'>Example List Item 3</button></li>
+
+            class: display-task use for regular view/selection mode
+            class: check-task  use for strikethrough mode
+            class: delete-task use for delete mode
+
+            ICONS:
+            <button class='check-task'><ion-icon name="checmark-circle-sharp"></ion-icon></button>
+            <button class='delete-task'><ion-icon name="close-circle-sharp"></ion-icon>
+        -->
+        </ul>
+    </div>
+
+    <dialog id="create-task-dialog">
+        <div class="modal-container">
+            <button class="cancel-task-input"><ion-icon name="close-outline"></ion-icon></button>
+
+            <div class="input-task-title">
+                <p contenteditable="true"></p>
+            </div> 
+
+            <div class="input-task-info">
+                <p contenteditable="true"></p>
+            </div>
+            <button class="submit-task-input">SAVE</button>
+        </div>
+    </dialog>
+
+    <dialog id="discard-changes-dialog">
+        <div class="modal-container">
+            <p>Discard the task?</p>
+            <button id="continue-task-creation">Continue Editing</button>
+            <button id="discard-task-creation">Discard</button>
+        </div>
+    </dialog>
+
+    <dialog id="delete-task-dialog">
+        <div class="modal-container">
+            <p>Permanently delete this task?</p>
+            <button id="optYes">Yes</button>
+            <button id="optNo">No</button>
+        </div>
+    </dialog>
+
+    <dialog id="add-title-dialog">
+        <div class="modal-container">
+            <p>Title is required.</p>
+            <button id="optContinue">Continue</button>
+        </div>
+    </dialog>
+
+<!-- All apps stay within the div tag below ------------------------>
+    </div>
+
+<!------------------------------------------------------------------>
+<!-- APP NAVIGATION ------------------------------------------------>
+    <div class="nav-container">
+        <div class="nav-menu">
+            <ul>
+                <li class="list">
+                    <a href="#">
+                        <span class="text">1</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="text">2</span>
+                    </a>
+                </li>
+                <!-- <li class="list">
+                    <a href="#">
+                        <span class="text">3</span>
+                    </a>-->
+            </ul>
+        </div>
+        <div class="empty-space"></div>
+        <div class="nav-selection">
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
